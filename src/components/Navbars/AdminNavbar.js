@@ -20,6 +20,7 @@ import {
   NavbarToggler,
 } from "reactstrap";
 import AppConst from "../../app-consts";
+import { logout } from '../../services/common/authentication/index';
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
@@ -96,7 +97,7 @@ function AdminNavbar(props) {
 
                   <NavLink tag="li">
                     <DropdownItem className="nav-item" onClick={() => {
-                      <logout />
+                      logout();
                       window.location.href = `${AppConst.baseUrl}/` + 'user/login';
                     }}>Log out</DropdownItem>
                   </NavLink>

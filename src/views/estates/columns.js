@@ -23,9 +23,14 @@ export const columns = [
         title: 'selling_price',
     },
     {
+        dataIndex: 'saleType',
+        title: 'saleType',
+    },
+    {
         dataIndex: 'sellDate',
         title: 'sell_date',
     },    
+     
     // {
     //     dataIndex: 'firstName',
     //     title: 'Name',

@@ -45,7 +45,7 @@ function Estates() {
     const updateEstates = (values) => {
 
         (async () => {
-            await EstatesServices.updateEstates({ ...values, userID: record.userID, trainerID: record.id });
+            await EstatesServices.updateEstates(values);
             setModalVisible(false);
             getData();
 

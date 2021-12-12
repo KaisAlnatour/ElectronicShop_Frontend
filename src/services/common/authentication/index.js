@@ -11,9 +11,7 @@ export async function signUp(user) {
 }
 
 export async function login(user_name, password) {
-    const data = await http.post(apiEndpoint, { user_name, password });
-    // localStorage.setItem(tokenKey, data.data.data.token);
-    // localStorage.setItem('password', data.data.data.user.password);
+    const data = await http.post(apiEndpoint, { user_name, password });    
     localStorage.setItem('user_name',  user_name);
     localStorage.setItem('password',  password);
     // console.log(data.data.data.user);
@@ -25,7 +23,8 @@ export function loginWithJwt(jwt) {
 }
 
 export function logout() {
-    localStorage.removeItem(tokenKey);
+    // localStorage.removeItem(user_name);
+    localStorage.user_name = "";
 }
 
 export function getCurrentUser() {

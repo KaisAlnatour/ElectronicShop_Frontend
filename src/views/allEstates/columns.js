@@ -43,15 +43,22 @@ export const columns = [
     {
         dataIndex: 'stockCount',
         title: 'stock_count',
+    },        
+    {
+        dataIndex: 'sellingPrice',
+        title: 'selling_price',
+    },
+    {
+        dataIndex: 'saleType',
+        title: 'saleType',
     },
     {
         dataIndex: 'sellDate',
         title: 'sell_date',
     },
-    {
-        dataIndex: 'sellingPrice',
-        title: 'selling_price',
-    },
+
+
+
     // {
     //     dataIndex: 'description',
     //     title: 'Description',
