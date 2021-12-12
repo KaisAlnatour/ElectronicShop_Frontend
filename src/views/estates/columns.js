@@ -7,56 +7,76 @@ export const columns = [
     //     title: 'Id',
     // },
     {
-        dataIndex: 'firstName',
-        title: 'Name',
-        render: (text, record, index) => {
-            return (
-                <>
-                    <Row>
-                        {record.firstName + ' ' + record.lastName}
-                    </Row>
-                </>
-            );
-        },
+        dataIndex: 'name',
+        title: 'name',
     },
     {
-        dataIndex: 'email',
-        title: 'Email',
-        render: (text, record, index) => {
-            return (
-                <>
-                    <Row>
-                        {record.user.email}
-                    </Row>
-                </>
-            );
-        },
+        dataIndex: 'stockPrice',
+        title: 'stock_price',
     },
     {
-        dataIndex: 'location',
-        title: 'Location',
+        dataIndex: 'stockCount',
+        title: 'stock_count',
     },
     {
-        dataIndex: 'specialization',
-        title: 'Specialization',
+        dataIndex: 'sellingPrice',
+        title: 'selling_price',
     },
     {
-        dataIndex: 'phone',
-        title: 'PhoneNumber',
-    },
-    {
-        dataIndex: 'description',
-        title: 'Description',
-        render: (text, record, index) => {
-            return (
-                <>
-                    <Row>
-                        {record.description ? record.description : ' - '}
-                    </Row>
-                </>
-            );
-        },
-    },
+        dataIndex: 'sellDate',
+        title: 'sell_date',
+    },    
+    // {
+    //     dataIndex: 'firstName',
+    //     title: 'Name',
+    //     render: (text, record, index) => {
+    //         return (
+    //             <>
+    //                 <Row>
+    //                     {record.firstName + ' ' + record.lastName}
+    //                 </Row>
+    //             </>
+    //         );
+    //     },
+    // },
+    // {
+    //     dataIndex: 'email',
+    //     title: 'Email',
+    //     render: (text, record, index) => {
+    //         return (
+    //             <>
+    //                 <Row>
+    //                     {record.user.email}
+    //                 </Row>
+    //             </>
+    //         );
+    //     },
+    // },
+    // {
+    //     dataIndex: 'location',
+    //     title: 'Location',
+    // },
+    // {
+    //     dataIndex: 'specialization',
+    //     title: 'Specialization',
+    // },
+    // {
+    //     dataIndex: 'phone',
+    //     title: 'PhoneNumber',
+    // },
+    // {
+    //     dataIndex: 'description',
+    //     title: 'Description',
+    //     render: (text, record, index) => {
+    //         return (
+    //             <>
+    //                 <Row>
+    //                     {record.description ? record.description : ' - '}
+    //                 </Row>
+    //             </>
+    //         );
+    //     },
+    // },
 
 
 ];

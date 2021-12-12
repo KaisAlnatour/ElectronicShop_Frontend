@@ -22,14 +22,14 @@ function Estates() {
         setSpinning(true);
         (async () => {
             const data = await EstatesServices.showAllEstates();
-            setEstate(data.data.data);
+            setEstate(data.data);
             setSpinning(false);
         })();
     };
     const handleDelete = () => {
         (async () => {
             const data = await EstatesServices.deleteEstates(record.id);
-            setEstate(data.data.data);
+            // setEstate(data.data);
             setDeleteModalVisible(false);
             getData();
             setSpinning(false);

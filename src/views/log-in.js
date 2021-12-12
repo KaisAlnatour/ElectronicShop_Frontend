@@ -19,7 +19,7 @@ function LoginPage() {
         setLoading(true);
 
         try {
-            const data = await login(values.email, values.password);
+            const data = await login(values.user_name, values.password);
             if (data) {
                 window.location.href = `http://localhost:3000/admin/estates`;
             }
@@ -50,7 +50,7 @@ function LoginPage() {
                                             >
                                                 <Form.Item
 
-                                                    name="email"
+                                                    name="user_name"
                                                     rules={[
                                                         {
                                                             required: true,

@@ -22,7 +22,7 @@ function Estates() {
         setSpinning(true);
         (async () => {
             const data = await EstatesServices.showAllEstates();
-            setEstate(data.data.data);
+            setEstate(data.data);
             setSpinning(false);
         })();
     };
@@ -70,11 +70,12 @@ function Estates() {
                                     setRecord(record);
                                 }}
                             >
-                                <DeleteOutlined />
+                                {/* <DeleteOutlined /> */}
+                                <i class="fas fa-shopping-cart"></i>
                             </Button>
                         </Tooltip>
                     </Col>
-                    <Col>
+                    {/* <Col>
                         <Tooltip title={'EditEstate'}>
                             <Button
                                 type='link'
@@ -89,7 +90,7 @@ function Estates() {
                                 <EditOutlined />
                             </Button>
                         </Tooltip>
-                    </Col>
+                    </Col> */}
                 </Row>
             );
         },

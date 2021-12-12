@@ -13,10 +13,11 @@ function Signup() {
         setLoading(true);
         form.setFieldsValue({ image: 'none' });
         try {
-            const data = await signUp({ ...form.getFieldsValue(), image: 'none' });
+            const data = await signUp({ ...form.getFieldsValue() });
             if (data) {
                 setTimeout(async function () {
-                    await login(form.getFieldValue('email'), form.getFieldValue('password')); if (data) {
+                    await login(form.getFieldValue('user_name'), form.getFieldValue('password')); 
+                    if (data) {
                         window.location.href = `http://localhost:3000/admin/estates`;
                     }
                 }, 2000);
@@ -47,73 +48,19 @@ function Signup() {
                                                 <div class="row register-form">
                                                     <div class="col-md-6">
                                                         <Form.Item
-                                                            name="userName"
+                                                            name="user_name"
                                                             rules={[{ required: true, message: 'Please input your Username!' }]}
                                                         >
                                                             <Input placeholder="Username" />
                                                         </Form.Item>
-                                                        <Form.Item
-                                                            name="firstName"
-                                                            rules={[{ required: true, message: 'Please input your Username!' }]}
-                                                        >
-                                                            <Input placeholder="First Name" />
-                                                        </Form.Item>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <Form.Item
                                                             name="password"
                                                             rules={[{ required: true, message: 'Please input your Username!' }]}
                                                         >
                                                             <Input.Password placeholder="Password" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            name="collage"
-                                                            rules={[{ required: true, message: 'Please input your Collage!' }]}
-                                                        >
-                                                            <Input placeholder="Collage" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            name="year"
-                                                            rules={[{ required: true, message: 'Please input your year!' }]}
-                                                        >
-                                                            <Input placeholder="Year" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            name="location"
-                                                            rules={[{ required: true, message: 'Please input your Location!' }]}
-                                                        >
-                                                            <Input placeholder="Location" />
-                                                        </Form.Item>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <Form.Item
-                                                            name="email"
-                                                            rules={[{ required: true, message: 'Please input your Username!' }]}
-                                                        >
-                                                            <Input type='email' placeholder="Email" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            name="lastName"
-                                                            rules={[{ required: true, message: 'Please input your Last Name!' }]}
-                                                        >
-                                                            <Input placeholder="Last Name" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            name="c_password"
-                                                            rules={[{ required: true, message: 'Please Repeat Password!' }]}
-                                                        >
-                                                            <Input.Password placeholder="Repeat Password" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            name="specialization"
-                                                            rules={[{ required: true, message: 'Please input your Specialization!' }]}
-                                                        >
-                                                            <Input placeholder="Specialization" />
-                                                        </Form.Item>
-                                                        <Form.Item
-                                                            name="studentInfo"
-                                                            rules={[{ required: true, message: 'Please input your Info!' }]}
-                                                        >
-                                                            <Input.TextArea placeholder="Info" />
-                                                        </Form.Item>
+                                                        </Form.Item>                                                       
                                                     </div>
 
                                                     <Form.Item>

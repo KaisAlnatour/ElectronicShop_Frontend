@@ -2,7 +2,7 @@
 import http from "../http/index";
 import AppConsts from "../../../app-consts";
 
-const apiEndpoint = AppConsts.remoteServiceBaseUrl + "/login";
+const apiEndpoint = AppConsts.remoteServiceBaseUrl + "user_management/login";
 const tokenKey = "token";
 
 export async function signUp(user) {
@@ -10,12 +10,13 @@ export async function signUp(user) {
     return data;
 }
 
-export async function login(email, password) {
-    const data = await http.post(apiEndpoint, { email, password });
-    localStorage.setItem(tokenKey, data.data.data.token);
-    localStorage.setItem('userType', data.data.data.user.type);
-    localStorage.setItem('userId', data.data.data.user.id);
-    console.log(data.data.data.user);
+export async function login(user_name, password) {
+    const data = await http.post(apiEndpoint, { user_name, password });
+    // localStorage.setItem(tokenKey, data.data.data.token);
+    // localStorage.setItem('password', data.data.data.user.password);
+    localStorage.setItem('user_name',  user_name);
+    localStorage.setItem('password',  password);
+    // console.log(data.data.data.user);
     return data;
 }
 

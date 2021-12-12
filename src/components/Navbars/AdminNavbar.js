@@ -96,6 +96,7 @@ function AdminNavbar(props) {
 
                   <NavLink tag="li">
                     <DropdownItem className="nav-item" onClick={() => {
+                      <logout />
                       window.location.href = `${AppConst.baseUrl}/` + 'user/login';
                     }}>Log out</DropdownItem>
                   </NavLink>

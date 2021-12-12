@@ -1,20 +1,4 @@
-/*!
 
-=========================================================
-* Black Dashboard React v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 // javascript plugin used to create scrollbars on windows
@@ -41,7 +25,7 @@ function Admin(props) {
   const [sidebarOpened, setsidebarOpened] = React.useState(
     document.documentElement.className.indexOf("nav-open") !== -1
   );
-  const userType = localStorage.getItem('userType');
+  // const userType = localStorage.getItem('userType');
 
   React.useEffect(() => {
     if (navigator.platform.indexOf("Win") > -1) {
@@ -97,48 +81,33 @@ function Admin(props) {
       }
     });
   };
-  const getBrandText = (path) => {
-    for (let i = 0; i < routes.length; i++) {
-      if (location.pathname.indexOf(routes[i].layout + routes[i].path) !== -1) {
-        return routes[i].name;
-      }
-    }
-    return "Brand";
-  };
+  
   return (
     <BackgroundColorContext.Consumer>
       {({ color, changeColor }) => (
         <React.Fragment>
           <div className="wrapper">
-            <Sidebar
-              // routes={userType === '2' ? userRouts : userType === '3' ? volunteerRouts : routes}
+            <Sidebar              
               routes={routes}
 
               logo={{
-
                 text: "ESC",
                 imgSrc: logo,
               }}
               toggleSidebar={toggleSidebar}
             />
+
             <div className="main-panel" ref={mainPanelRef} data={color}>
-              <AdminNavbar
-                // brandText={getBrandText(location.pathname)}
+              <AdminNavbar              
                 toggleSidebar={toggleSidebar}
                 sidebarOpened={sidebarOpened}
               />
               {
-              // userType === '2' ? (<Switch>
-              //   {getRoutes(userRouts)}
-              //   <Redirect from="/admin" to="/admin/courses" />
-              // </Switch>) : userType === '3' ? (<Switch>
-              //   {getRoutes(volunteerRouts)}
-              //   <Redirect from="/admin" to="/admin/dashboard" />
-              // </Switch>) : 
               <Switch>
                 {getRoutes(routes)}
                 <Redirect from="/admin" to="/admin/estates" />
-              </Switch>}
+              </Switch>
+              }
               <Footer fluid />
             </div>
           </div>

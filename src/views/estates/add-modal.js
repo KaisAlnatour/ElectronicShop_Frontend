@@ -25,16 +25,9 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
     useEffect(() => {
         if (isUpdate) {
             form.setFieldsValue({
-                firstName: formValues.firstName,
-                lastName: formValues.lastName,
-                user_name: formValues?.user?.name,
-                userID: formValues?.user?.id,
-                email: formValues?.user?.email,
-                phone: formValues.phone,
-                age: formValues.age,
-                description: formValues.description,
-                location: formValues.location,
-                specialization: formValues.specialization,
+                name: formValues.name,
+                stock_price: formValues.stock_price,
+                stock_count: formValues.stock_count,
             });
         } else {
             form.resetFields();
@@ -62,12 +55,12 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
                             <Row gutter={24} justify='space-between'>
                                 <Col sm={24} lg={12}>
                                     <Form.Item
-                                        label="First Name"
-                                        name="firstName"
+                                        label="name"
+                                        name="name"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please Add First Name!',
+                                                message: 'Please Add Name!',
                                             },
                                         ]}
                                     >
@@ -77,12 +70,12 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
                                 <Col sm={24} lg={12}>
 
                                     <Form.Item
-                                        label="Last Name"
-                                        name="lastName"
+                                        label="stock_price"
+                                        name="stock_price"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please Add Last Name!',
+                                                message: 'Please Add Stock Price !',
                                             },
                                         ]}
                                     >
@@ -90,141 +83,37 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
                                     </Form.Item> </Col>
                             </Row>
                             <Row gutter={24} justify='space-between'>
-                                <Col sm={24} lg={12}>
+                                {/* <Col sm={24} lg={12}>
 
                                     <Form.Item
-                                        label="User Name"
-                                        name="userName"
+                                        label="investor_name"
+                                        name="investor_name"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please Add User Name!',
+                                                message: 'Please Add Investor Name!',
                                             },
                                         ]}
                                     >
                                         <Input />
                                     </Form.Item>
-                                </Col>
+                                </Col> */}
 
                                 <Col sm={24} lg={12}>
                                     <Form.Item
-                                        label="Email"
-                                        name="email"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please Add Email!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input type='email' />
-                                    </Form.Item>
-                                </Col>
-
-                            </Row>
-                            {!isUpdate && <Row gutter={24} justify='space-between'>
-                                <Col sm={24} lg={12}>
-                                    <Form.Item
-                                        label="Password"
-                                        name="password"
-                                        rules={[
-                                            {
-                                                required: isUpdate ? false : true,
-                                                message: 'Please Add Password!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input.Password style={{ width: '100%' }} />
-                                    </Form.Item>
-                                </Col>
-                                <Col sm={24} lg={12}>
-
-                                    <Form.Item
-                                        label="Repeat Password"
-                                        name="c_password"
-                                        rules={[
-                                            {
-                                                required: isUpdate ? false : true,
-                                                message: 'Please Add Password!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input.Password style={{ width: '100%' }} />
-                                    </Form.Item>
-                                </Col>
-                            </Row>}
-                        </TabPane>
-                        <TabPane key='details' tab="Details" >
-                            <Row gutter={24} justify='space-between'>
-                                <Col sm={24} lg={12}>
-                                    <Form.Item
-                                        label="Phone"
-                                        name="phone"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please Add Phone!',
-                                            },
-                                        ]}
-                                    >
-                                        <InputNumber style={{ width: '100%' }} min={0} />
-                                    </Form.Item>
-                                </Col>
-                                <Col sm={24} lg={12}>
-                                    <Form.Item
-                                        label="Age"
-                                        name="age"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please Add Age!',
-                                            },
-                                        ]}
-                                    >
-                                        <InputNumber style={{ width: '100%' }} min={0} />
-                                    </Form.Item>
-                                </Col>
-                            </Row>
-
-                            <Row gutter={24} justify='space-between'>
-                                <Col sm={24} lg={12}>
-                                    <Form.Item
-                                        label="Location"
-                                        name="location"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please Add Location!',
-                                            },
-                                        ]}
+                                        label="stock_count"
+                                        name="stock_count"
+                                        // rules={[
+                                        //     {
+                                        //         required: true,
+                                        //         message: 'Please Add Stock Count!',
+                                        //     },
+                                        // ]}
                                     >
                                         <Input />
                                     </Form.Item>
                                 </Col>
-                                <Col sm={24} lg={12}>
-                                    <Form.Item
-                                        label="Specialization"
-                                        name="specialization"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'Please Add Specialization!',
-                                            },
-                                        ]}
-                                    >
-                                        <Input />
-                                    </Form.Item>
-                                </Col>
-                            </Row>
-                            <Row gutter={24} justify='space-between'>
-                                <Col sm={24} >
-                                    <Form.Item
-                                        label="Description"
-                                        name="description"
-                                    >
-                                        <Input.TextArea />
-                                    </Form.Item>
-                                </Col>
+
                             </Row>
                         </TabPane>
 
