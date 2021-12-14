@@ -10,20 +10,17 @@ function Signup() {
     const [form] = Form.useForm();
 
     async function onSubmit() {
+
         setLoading(true);
-        form.setFieldsValue({ image: 'none' });
+
         try {
-            const data = await signUp({ ...form.getFieldsValue() });
+            const data = await signUp(form.getFieldValue('user_name'), form.getFieldValue('password'));
             if (data) {
                 setTimeout(async function () {
-                    await login(form.getFieldValue('user_name'), form.getFieldValue('password')); 
-                    if (data) {
+                    await login(form.getFieldValue('user_name'), form.getFieldValue('password')); if (data) {
                         window.location.href = `http://localhost:3000/admin/estates`;
                     }
                 }, 2000);
-
-
-
             }
         } finally {
             setLoading(false);
@@ -60,7 +57,7 @@ function Signup() {
                                                             rules={[{ required: true, message: 'Please input your Username!' }]}
                                                         >
                                                             <Input.Password placeholder="Password" />
-                                                        </Form.Item>                                                       
+                                                        </Form.Item>
                                                     </div>
 
                                                     <Form.Item>
