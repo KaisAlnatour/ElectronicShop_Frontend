@@ -1,9 +1,20 @@
+import React from 'react';
+import { Row } from "antd";
 
 export const columns = [
     
     {
-        dataIndex: 'customerId',
-        title: 'Customer Id',
+        dataIndex: 'customer',
+        title: 'Customer',
+        render: (text, record, index) => {
+            return (
+                <>
+                    <Row>
+                        {record?.customer?.firstName + ' ' + record?.customer?.lastName}
+                    </Row>
+                </>
+            );
+        },
     },
     {
         dataIndex: 'orderDate',

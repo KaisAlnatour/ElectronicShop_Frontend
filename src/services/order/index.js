@@ -22,6 +22,11 @@ export async function showAllOrder() {
     return data;
 }
 
+export async function showAllCustomer() {
+    const data = await http.get(apiEndpoint + 'getAllCustomer');
+    return data;
+}
+
 export async function showOrderById(id) {
     const data = await http.get(apiEndpoint + 'showByID/' + `${id}`);
     return data;

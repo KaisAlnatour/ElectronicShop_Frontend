@@ -59,7 +59,7 @@ function Order() {
             return (
                 <Row justify="space-between">
                     <Col>
-                        <Tooltip title={'Delete Estate'}>
+                        <Tooltip title={'Delete Order'}>
                             <Button
                                 type='link'
                                 danger
@@ -75,7 +75,7 @@ function Order() {
                         </Tooltip>
                     </Col>
                     <Col>
-                        <Tooltip title={'EditEstate'}>
+                        <Tooltip title={'Update Order'}>
                             <Button
                                 type='link'
                                 size="small"
@@ -105,7 +105,7 @@ function Order() {
 
                             <Button type='primary' onClick={() => { setModalVisible(true); setIsUpdate(false); }} >
                                 <Row align='middle'>
-                                    <PlusOutlined /> Add  Order
+                                    <PlusOutlined /> Create  Order
                                 </Row>
                             </Button>
                         </Row>

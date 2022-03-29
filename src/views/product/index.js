@@ -74,7 +74,7 @@ function Product() {
                         </Tooltip>
                     </Col>
                     <Col>
-                        <Tooltip title={'Edit product'}>
+                        <Tooltip title={'Update product'}>
                             <Button
                                 type='link'
                                 size="small"

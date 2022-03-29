@@ -17,8 +17,7 @@ const AddProductModal = ({ isVisible, setVisible, addProduct, formValues, update
   
     const onFinish = (values) => {
         const data = values;
-        setLoading(true);
-        setVisible(false);
+        setLoading(true);        
         if (isUpdate) {
             (async () => {
                 await updateProduct(data);
@@ -30,6 +29,7 @@ const AddProductModal = ({ isVisible, setVisible, addProduct, formValues, update
                 setLoading(false);
             })();
         }
+        setVisible(false);
     };
 
     useEffect(() => {

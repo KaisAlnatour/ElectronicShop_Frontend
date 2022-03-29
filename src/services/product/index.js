@@ -26,9 +26,3 @@ export async function showAllSupplier() {
     const data = await http.get(apiEndpoint + 'getAllSupplier');
     return data;
 }
-
-
-export async function showProductById(id) {
-    const data = await http.get(apiEndpoint + 'showByID/' + `${id}`);
-    return data;
-}
