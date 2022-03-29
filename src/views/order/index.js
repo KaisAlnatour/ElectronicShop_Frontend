@@ -45,7 +45,7 @@ function Order() {
     const updateOrder = (values) => {
 
         (async () => {
-            await OrderServices.updateOrder(values);
+            await OrderServices.updateOrder({ ...values, id: record.id });
             setModalVisible(false);
             getData();
 

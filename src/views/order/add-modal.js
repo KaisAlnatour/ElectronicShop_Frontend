@@ -43,14 +43,21 @@ const AddOrderModal = ({ isVisible, setVisible, addOrder, formValues, updateOrde
     };
 
     useEffect(() => {
+
+        // setSpinning(true);
         if (isUpdate) {
             form.setFieldsValue({
                 customerId: formValues.customerId,
                 orderDate: moment(formValues.orderDate),                
-                // orderNumber: formValues.orderNumber,
-                // TotalAmount: formValues.TotalAmount,
-            });
+                orderNumber: formValues.orderNumber,                
+            });            
+            // setSpinning(false);
         } else {
+            // form.resetFields();
+            // form.setFieldsValue({
+            //     required: false,
+            // });
+            // setSpinning(false);
             form.resetFields();
         }
 
