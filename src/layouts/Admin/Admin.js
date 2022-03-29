@@ -91,7 +91,7 @@ function Admin(props) {
               routes={routes}
 
               logo={{
-                text: "ESC",
+                text: "ES",
                 imgSrc: logo,
               }}
               toggleSidebar={toggleSidebar}
@@ -105,7 +105,7 @@ function Admin(props) {
               {
               <Switch>
                 {getRoutes(routes)}
-                <Redirect from="/admin" to="/admin/estates" />
+                <Redirect from="/" to="/admin/product" />
               </Switch>
               }
               <Footer fluid />

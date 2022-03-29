@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getCurrentUser } from '../authentication/index';
+// import { getCurrentUser } from '../authentication/index';
 import AppConsts from '../../../app-consts';
 const qs = require("qs");
 class httpClientFactory {
@@ -15,18 +15,18 @@ class httpClientFactory {
                         },
                 });
 
-                http.interceptors.request.use(
-                        function (config) {
-                                if (getCurrentUser()) {
-                                        config.headers.common['Authorization'] = 'Bearer ' + getCurrentUser();
-                                }
-                                return config;
-                        },
+                // http.interceptors.request.use(
+                //         function (config) {
+                //                 if (getCurrentUser()) {
+                //                         config.headers.common['Authorization'] = 'Bearer ' + getCurrentUser();
+                //                 }
+                //                 return config;
+                //         },
 
-                        function (error) {
-                                return Promise.reject(error);
-                        }
-                );
+                //         function (error) {
+                //                 return Promise.reject(error);
+                //         }
+                // );
 
                 http.interceptors.response.use(
                         (response) => {

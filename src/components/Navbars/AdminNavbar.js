@@ -6,21 +6,11 @@ import classNames from "classnames";
 
 // reactstrap components
 import {
-
-  Collapse,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
   NavbarBrand,
   Navbar,
-  NavLink,
-  Nav,
   Container,
   NavbarToggler,
 } from "reactstrap";
-import AppConst from "../../app-consts";
-import { logout } from '../../services/common/authentication/index';
 
 function AdminNavbar(props) {
   const [collapseOpen, setcollapseOpen] = React.useState(false);
@@ -73,39 +63,7 @@ function AdminNavbar(props) {
             <span className="navbar-toggler-bar navbar-kebab" />
             <span className="navbar-toggler-bar navbar-kebab" />
             <span className="navbar-toggler-bar navbar-kebab" />
-          </NavbarToggler>
-          <Collapse navbar isOpen={collapseOpen}>
-            <Nav className="ml-auto" navbar>
-
-              <UncontrolledDropdown nav>
-                <DropdownToggle
-                  caret
-                  color="default"
-                  nav
-                  onClick={(e) => e.preventDefault()}
-                >
-                  <div className="photo">
-                    <img
-                      alt="..."
-                      src={require("assets/img/anime3.png").default}
-                    />
-                  </div>
-                  <b className="caret d-none d-lg-block d-xl-block" />
-                  <p className="d-lg-none">Log out</p>
-                </DropdownToggle>
-                <DropdownMenu className="dropdown-navbar" right tag="ul">
-
-                  <NavLink tag="li">
-                    <DropdownItem className="nav-item" onClick={() => {
-                      logout();
-                      window.location.href = `${AppConst.baseUrl}/` + 'user/login';
-                    }}>Log out</DropdownItem>
-                  </NavLink>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <li className="separator d-lg-none" />
-            </Nav>
-          </Collapse>
+          </NavbarToggler>          
         </Container>
       </Navbar>
     </>

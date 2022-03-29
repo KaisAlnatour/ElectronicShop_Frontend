@@ -29,7 +29,7 @@ function Footer() {
         <div className="copyright">
           © {new Date().getFullYear()} made with{" "}
           <i className="tim-icons icon-heart-2" /> by{" "}
-          ESC Team{" "}
+          ES Team{" "}
           for a better web.
         </div>
       </Container>

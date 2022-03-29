@@ -4,9 +4,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import AdminLayout from "layouts/Admin/Admin.js";
-// import RTLLayout from "layouts/RTL/RTL.js";
-import Login from "layouts/public/log-in.js";
-
 import "assets/scss/black-dashboard-react.scss";
 import "assets/demo/demo.css";
 import "assets/css/nucleo-icons.css";
@@ -22,8 +19,7 @@ ReactDOM.render(
     <BackgroundColorWrapper>
       <BrowserRouter>
         <Switch>
-          <Route path="/admin" render={(props) => <AdminLayout {...props} />} />          
-          <Route path="/user" render={(props) => <Login {...props} />} />
+          <Route path="/" render={(props) => <AdminLayout {...props} />} />                  
           <Redirect from="/" to="/admin" />
         </Switch>
       </BrowserRouter>

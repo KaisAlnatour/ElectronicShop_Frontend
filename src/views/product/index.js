@@ -3,16 +3,16 @@ import React, { useEffect, useState } from "react";
 import { Table, Row, Modal, Button, Col, Spin, Tooltip, Typography, Card } from 'antd';
 import { PlusOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { columns } from './columns';
-import AddEstatesModal from './add-modal';
-import * as EstatesServices from '../../services/estates/index';
+import AddProductModal from './add-modal';
+import * as ProductServices from '../../services/product/index';
 
-function Estates() {
+function Product() {
     const [isModalVisible, setModalVisible] = useState(false);
     const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
     const [spinning, setSpinning] = useState(true);
     const [record, setRecord] = useState();
-    const [estates, setEstate] = useState([]);
-    const [isUpdate, setIsUpdate] = useState(false);
+    const [product, setProduct] = useState([]);
+    const [isUpdate, setIsUpdate] = useState(false);    
 
     useEffect(() => {
         getData();
@@ -21,15 +21,14 @@ function Estates() {
     const getData = () => {
         setSpinning(true);
         (async () => {
-            const data = await EstatesServices.showAllEstates();
-            setEstate(data.data);
+            const data = await ProductServices.showAllProduct();            
+            setProduct(data.data.data);            
             setSpinning(false);
         })();
     };
     const handleDelete = () => {
         (async () => {
-            const data = await EstatesServices.deleteEstates(record.id);
-            // setEstate(data.data);
+            const data = await ProductServices.deleteProduct(record.id);            
             setDeleteModalVisible(false);
             getData();
             setSpinning(false);
@@ -38,14 +37,14 @@ function Estates() {
     const onFinish = (values) => {
 
         (async () => {
-            await EstatesServices.addEstates(values);
+            await ProductServices.addProduct(values);
             getData();
         })();
     };
-    const updateEstates = (values) => {
+    const updateProduct = (values) => {
 
         (async () => {
-            await EstatesServices.updateEstates(values);
+            await ProductServices.updateProduct({ ...values, id: record.id });
             setModalVisible(false);
             getData();
 
@@ -59,7 +58,7 @@ function Estates() {
             return (
                 <Row justify="space-between">
                     <Col>
-                        <Tooltip title={'Delete Estate'}>
+                        <Tooltip title={'Delete product'}>
                             <Button
                                 type='link'
                                 danger
@@ -75,7 +74,7 @@ function Estates() {
                         </Tooltip>
                     </Col>
                     <Col>
-                        <Tooltip title={'EditEstate'}>
+                        <Tooltip title={'Edit product'}>
                             <Button
                                 type='link'
                                 size="small"
@@ -105,34 +104,34 @@ function Estates() {
 
                             <Button type='primary' onClick={() => { setModalVisible(true); setIsUpdate(false); }} >
                                 <Row align='middle'>
-                                    <PlusOutlined /> Add  Estates
+                                    <PlusOutlined /> Create Product
                                 </Row>
                             </Button>
                         </Row>
                         <Row>
-                            <Table dataSource={estates} columns={[...columns, actionColumn]} style={{
+                            <Table dataSource={product} columns={[...columns, actionColumn]} style={{
                                 width: '100%',
                                 padding: ' 16px 0 0',
                                 borderRadius: '7px'
                             }} />
                         </Row>
-                        <AddEstatesModal
+                        <AddProductModal
                             isVisible={isModalVisible}
                             setVisible={setModalVisible}
-                            addEstates={onFinish}
-                            updateEstates={updateEstates}
+                            addProduct={onFinish}
+                            updateProduct={updateProduct}
                             formValues={record}
                             isUpdate={isUpdate}
                         />
                         <Modal
-                            title='Delete  Estates'
+                            title='Delete product'
                             visible={isDeleteModalVisible}
                             onCancel={() => { setDeleteModalVisible(false); }}
                             onOk={() => handleDelete()}
 
                         >
                             <Typography.Text strong>
-                                Are you Sure You Want To Delete This  Estates ?
+                                Are you Sure You Want To Delete This  Product ?
                             </Typography.Text>
 
                         </Modal>
@@ -143,4 +142,4 @@ function Estates() {
     );
 }
 
-export default Estates;
+export default Product;

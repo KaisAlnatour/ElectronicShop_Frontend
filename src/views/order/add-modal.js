@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Modal, Button, Form, Input, Col, Tabs, InputNumber } from 'antd';
+import { Row, Modal, Button, Form, Input, Col, Tabs, DatePicker } from 'antd';
+import moment from 'moment';
+
 const { TabPane } = Tabs;
 
-const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, updateEstates, isUpdate }) => {
+const AddOrderModal = ({ isVisible, setVisible, addOrder, formValues, updateOrder, isUpdate }) => {
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
         const data = values;
+        data.orderDate = moment(values.orderDate).format("YYYY/MM/DD");
         setLoading(true);
         if (isUpdate) {
             (async () => {
-                await updateEstates(data);
+                await updateOrder(data);
                 setLoading(false);
             })();
         } else {
             (async () => {
-                await addEstates(data);
+                await addOrder(data);
                 setLoading(false);
             })();
         }
@@ -25,9 +28,10 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
     useEffect(() => {
         if (isUpdate) {
             form.setFieldsValue({
-                name: formValues.name,
-                stock_price: formValues.stock_price,
-                stock_count: formValues.stock_count,
+                customerId: formValues.customerId,
+                orderDate: moment(formValues.orderDate),                
+                orderNumber: formValues.orderNumber,
+                TotalAmount: formValues.TotalAmount,
             });
         } else {
             form.resetFields();
@@ -37,7 +41,7 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
     return (
         <>
             <Modal
-                title='Add Estates'
+                title='Create Order'
                 visible={isVisible}
                 onCancel={() => { setVisible(false); form.resetFields(); }}
                 okButtonProps={{ hidden: true }}
@@ -55,12 +59,12 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
                             <Row gutter={24} justify='space-between'>
                                 <Col sm={24} lg={12}>
                                     <Form.Item
-                                        label="name"
-                                        name="name"
+                                        label="customerId"
+                                        name="customerId"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please Add Name!',
+                                                message: 'Please Add customerId!',
                                             },
                                         ]}
                                     >
@@ -68,47 +72,50 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
                                     </Form.Item>
                                 </Col>
                                 <Col sm={24} lg={12}>
-
                                     <Form.Item
-                                        label="stock_price"
-                                        name="stock_price"
+                                        label="Order Date"
+                                        name="orderDate"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please Add Stock Price !',
+                                                message: 'Please Add Start Date!',
                                             },
                                         ]}
                                     >
-                                        <Input />
-                                    </Form.Item> </Col>
-                            </Row>
-                            <Row gutter={24} justify='space-between'>
+                                        <DatePicker style={{ width: '100%' }} />
+                                    </Form.Item>
+                                </Col>
                                 {/* <Col sm={24} lg={12}>
 
                                     <Form.Item
-                                        label="investor_name"
-                                        name="investor_name"
+                                        label="orderDate"
+                                        name="orderDate"
                                         rules={[
                                             {
                                                 required: true,
-                                                message: 'Please Add Investor Name!',
+                                                message: 'Please Add orderDate !',
                                             },
                                         ]}
                                     >
                                         <Input />
-                                    </Form.Item>
+                                    </Form.Item> 
                                 </Col> */}
+                            </Row>
+                            <Row gutter={24} justify='space-between'>
+                                <Col sm={24} lg={12}>
+
+                                    <Form.Item
+                                        label="orderNumber"
+                                        name="orderNumber"           
+                                    >
+                                        <Input />
+                                    </Form.Item>
+                                </Col>
 
                                 <Col sm={24} lg={12}>
                                     <Form.Item
-                                        label="stock_count"
-                                        name="stock_count"
-                                        // rules={[
-                                        //     {
-                                        //         required: true,
-                                        //         message: 'Please Add Stock Count!',
-                                        //     },
-                                        // ]}
+                                        label="TotalAmount"
+                                        name="TotalAmount"
                                     >
                                         <Input />
                                     </Form.Item>
@@ -143,4 +150,4 @@ const AddEstatesModal = ({ isVisible, setVisible, addEstates, formValues, update
 
 };
 
-export default AddEstatesModal;
+export default AddOrderModal;
